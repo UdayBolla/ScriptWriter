@@ -1,0 +1,361 @@
+/* ═════════════════════════════════════════════════════════════════════════════
+   Global Styles & Reset
+   ═════════════════════════════════════════════════════════════════════════════ */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f4f7f6; /* Light background */
+  color: #333;
+  min-height: 100vh; /* Ensure body takes full viewport height */
+}
+
+/* Base styles for buttons and inputs to be consistent */
+button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+  white-space: nowrap; /* Prevent text wrapping inside buttons */
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+input,
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%; /* Make them fluid */
+  box-sizing: border-box; /* Include padding/border in width */
+  margin-bottom: 10px;
+}
+
+textarea {
+  resize: vertical; /* Allow vertical resizing only */
+  line-height: 1.5; /* Improve readability */
+}
+
+h1, h2 {
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   Auth Page Styles (Mobile-First)
+   ═════════════════════════════════════════════════════════════════════════════ */
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #e9ecef;
+}
+
+.auth-form {
+  background-color: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 350px; /* Limit width on larger screens */
+  text-align: center;
+}
+
+.auth-form input {
+  margin-bottom: 15px;
+}
+
+.auth-form button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.auth-form p {
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+.toggle-auth {
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.demo-credentials {
+  margin-top: 20px;
+  font-style: italic;
+  color: #6c757d;
+  font-size: 0.85rem;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   Main App Layout (Mobile-First)
+   ═════════════════════════════════════════════════════════════════════════════ */
+.app-container {
+  display: flex;
+  flex-direction: column; /* Stack header, main-content on mobile */
+  min-height: 100vh;
+}
+
+header {
+  background-color: #2c3e50; /* Dark blue */
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column; /* Stack elements on mobile */
+  align-items: center;
+  gap: 10px; /* Space between elements */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  color: white;
+  margin: 0;
+  font-size: 1.8rem; /* Responsive font size */
+}
+
+.header-user-info,
+.header-actions {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to next line if needed */
+  gap: 10px;
+  justify-content: center; /* Center actions/info on mobile */
+  width: 100%; /* Take full width on mobile */
+}
+
+.header-user-info span {
+  font-size: 0.9rem;
+  align-self: center;
+}
+
+.save-status {
+  font-size: 0.85rem;
+  color: #a2d2ff; /* Lighter color for status */
+  align-self: center;
+  padding: 0 5px;
+}
+
+.main-content {
+  flex-grow: 1; /* Allows main content to take remaining space */
+  display: flex;
+  flex-direction: column; /* Sidebar stacks above editor on mobile */
+  padding: 15px;
+  gap: 15px; /* Space between sidebar and editor */
+}
+
+.sidebar {
+  background-color: #fcfcfc;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  width: 100%; /* Full width on mobile */
+  max-height: 300px; /* Limit height for scrollable content on mobile */
+  overflow-y: auto; /* Enable scrolling for screenplay list */
+  box-sizing: border-box;
+}
+
+.sidebar h2 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.screenplay-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+.screenplay-list li:last-child {
+  border-bottom: none;
+}
+
+.screenplay-list li.active {
+  background-color: #e0f2f7; /* Light blue for active item */
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.screenplay-title-link {
+  flex-grow: 1;
+  cursor: pointer;
+  padding-right: 10px; /* Space before delete button */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis for long titles */
+  white-space: nowrap; /* Keep title on a single line */
+}
+
+.screenplay-list li:hover:not(.active) {
+  background-color: #f0f0f0;
+}
+
+.delete-screenplay-btn {
+  background-color: #dc3545; /* Red for delete */
+  color: white;
+  padding: 5px 8px;
+  font-size: 0.8rem;
+  line-height: 1;
+  border-radius: 50%; /* Make it circular */
+  width: 25px; /* Fixed width for circle */
+  height: 25px; /* Fixed height for circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* Don't shrink */
+}
+
+.delete-screenplay-btn:hover {
+  background-color: #c82333;
+}
+
+.no-screenplays {
+  text-align: center;
+  color: #6c757d;
+  padding: 20px;
+}
+
+.editor-area {
+  flex-grow: 1;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.screenplay-title-edit {
+  font-size: 1.6rem; /* Slightly smaller on mobile */
+  font-weight: bold;
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+}
+
+.screenplay-content-textarea {
+  flex-grow: 1; /* Takes up remaining space in editor */
+  font-family: 'Georgia', serif; /* Classic screenplay font */
+  line-height: 1.6;
+  font-size: 1.1rem; /* Slightly smaller on mobile */
+  white-space: pre-wrap; /* Preserves whitespace and wraps text */
+  word-wrap: break-word; /* Breaks long words */
+  tab-size: 4; /* Standard tab size */
+}
+
+.no-screenplay-selected {
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+  padding: 50px 20px;
+  font-size: 1.1rem;
+}
+
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   Media Queries (Apply styles for larger screens - Desktop First)
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+/* Tablets and larger (e.g., 768px wide) */
+@media (min-width: 768px) {
+  header {
+    flex-direction: row; /* Header items side-by-side */
+    justify-content: space-between; /* Space out elements */
+    padding: 15px 30px;
+  }
+
+  header h1 {
+    font-size: 2.2rem;
+  }
+
+  .header-user-info,
+  .header-actions {
+    width: auto; /* Allow them to shrink */
+    justify-content: flex-end; /* Align to right */
+  }
+
+  .main-content {
+    flex-direction: row; /* Sidebar and editor side-by-side */
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .sidebar {
+    min-width: 280px; /* Fixed width for sidebar on desktop */
+    max-width: 350px;
+    height: auto; /* Let content define height */
+    max-height: none; /* No max height for scrolling */
+  }
+
+  .sidebar h2 {
+    font-size: 1.6rem;
+  }
+
+  .screenplay-title-edit {
+    font-size: 2rem; /* Larger on desktop */
+  }
+
+  .screenplay-content-textarea {
+    font-size: 1.2rem; /* Larger on desktop */
+  }
+}
+
+/* Desktops and larger (e.g., 1024px wide) */
+@media (min-width: 1024px) {
+  header {
+    padding: 20px 40px;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+  }
+
+  .sidebar {
+    min-width: 300px;
+  }
+
+  .main-content {
+    padding: 25px;
+  }
+
+  .screenplay-title-edit {
+    font-size: 2.2rem;
+  }
+
+  .screenplay-content-textarea {
+    font-size: 1.3rem;
+  }
+}
