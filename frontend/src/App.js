@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import axios from 'axios';
 import './App.css'; // For basic styling
 
-const API_BASE_URL = 'https://scriptwriter-c2yk.onrender.com/api'; // Backend URL
+const API_BASE_URL = `${https://scriptwriter-c2yk.onrender.com}/api`; // Backend URL
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
